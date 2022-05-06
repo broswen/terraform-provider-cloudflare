@@ -79,5 +79,13 @@ func resourceCloudflareWaitingRoomSchema() map[string]*schema.Schema {
 			Type:     schema.TypeBool,
 			Optional: true,
 		},
+		"next_event_prequeue_start_time": {
+			Type:     schema.TypeString,
+			Computed: true,
+		},
+		"next_event_start_time": {
+			Type:     schema.TypeString,
+			Computed: true,
+		},
 	}
 }

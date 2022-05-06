@@ -1,0 +1,3 @@
+```release-note:enhancement
+resource/cloudflared_waiting_room: Add support for `next_event_prequeue_start_time` and `next_event_start_time` exported attributes
+```

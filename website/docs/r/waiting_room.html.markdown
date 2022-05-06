@@ -46,6 +46,8 @@ The following arguments are supported:
 The following attributes are exported:
 
 * `id` - The waiting room ID.
+* `next_event_prequeue_start_time` - ISO 8601 timestamp that marks the queue start of the event.
+* `next_event_start_time` - ISO 8601 timestamp that marks the start of the event.
 
 ## Import
 

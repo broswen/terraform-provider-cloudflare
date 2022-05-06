@@ -93,6 +93,12 @@ func resourceCloudflareWaitingRoomRead(ctx context.Context, d *schema.ResourceDa
 	d.Set("disable_session_renewal", waitingRoom.DisableSessionRenewal)
 	d.Set("custom_page_html", waitingRoom.CustomPageHTML)
 	d.Set("json_response_enabled", waitingRoom.JsonResponseEnabled)
+	if waitingRoom.NextEventPrequeueStartTime != nil {
+		d.Set("next_event_prequeue_start_time", waitingRoom.NextEventPrequeueStartTime.Format(time.RFC3339))
+	}
+	if waitingRoom.NextEventStartTime != nil {
+		d.Set("next_event_start_time", waitingRoom.NextEventStartTime.Format(time.RFC3339))
+	}
 	return nil
 }
 

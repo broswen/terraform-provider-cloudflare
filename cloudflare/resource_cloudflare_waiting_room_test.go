@@ -38,6 +38,8 @@ func TestAccCloudflareWaitingRoom_Create(t *testing.T) {
 					resource.TestCheckResourceAttr(name, "total_active_users", "405"),
 					resource.TestCheckResourceAttr(name, "session_duration", "10"),
 					resource.TestCheckResourceAttr(name, "json_response_enabled", "true"),
+					resource.TestCheckNoResourceAttr(name, "next_event_prequeue_start_time"),
+					resource.TestCheckNoResourceAttr(name, "next_event_start_time"),
 				),
 			},
 		},
