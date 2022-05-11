@@ -95,9 +95,13 @@ func resourceCloudflareWaitingRoomRead(ctx context.Context, d *schema.ResourceDa
 	d.Set("json_response_enabled", waitingRoom.JsonResponseEnabled)
 	if waitingRoom.NextEventPrequeueStartTime != nil {
 		d.Set("next_event_prequeue_start_time", waitingRoom.NextEventPrequeueStartTime.Format(time.RFC3339))
+	} else {
+		d.Set("next_event_prequeue_start_time", nil)
 	}
 	if waitingRoom.NextEventStartTime != nil {
 		d.Set("next_event_start_time", waitingRoom.NextEventStartTime.Format(time.RFC3339))
+	} else {
+		d.Set("next_event_start_time", nil)
 	}
 	return nil
 }
