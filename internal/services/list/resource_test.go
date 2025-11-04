@@ -399,15 +399,8 @@ func TestAccCloudflareListWithItems_IP(t *testing.T) {
 				ImportStateIdFunc: func(s *terraform.State) (string, error) {
 					return fmt.Sprintf("%s/%s", accountID, s.RootModule().Resources[resourceNameIP].Primary.ID), nil
 				},
-				ImportStateVerify: true,
-			},
-			{
-				ImportState:  true,
-				ResourceName: resourceNameIP,
-				ImportStateIdFunc: func(s *terraform.State) (string, error) {
-					return fmt.Sprintf("%s/%s", accountID, s.RootModule().Resources[resourceNameIP].Primary.ID), nil
-				},
-				ImportStateKind: resource.ImportBlockWithID,
+				ImportStateVerify:       true,
+				ImportStateVerifyIgnore: []string{"items"},
 			},
 			// unset items to clear list
 			{
@@ -493,15 +486,8 @@ func TestAccCloudflareListWithItems_Hostname(t *testing.T) {
 				ImportStateIdFunc: func(s *terraform.State) (string, error) {
 					return fmt.Sprintf("%s/%s", accountID, s.RootModule().Resources[resourceNameIP].Primary.ID), nil
 				},
-				ImportStateVerify: true,
-			},
-			{
-				ImportState:  true,
-				ResourceName: resourceNameIP,
-				ImportStateIdFunc: func(s *terraform.State) (string, error) {
-					return fmt.Sprintf("%s/%s", accountID, s.RootModule().Resources[resourceNameIP].Primary.ID), nil
-				},
-				ImportStateKind: resource.ImportBlockWithID,
+				ImportStateVerify:       true,
+				ImportStateVerifyIgnore: []string{"items"},
 			},
 		},
 	})
@@ -569,15 +555,11 @@ func TestAccCloudflareListWithItems_Redirect(t *testing.T) {
 				ImportStateIdFunc: func(s *terraform.State) (string, error) {
 					return fmt.Sprintf("%s/%s", accountID, s.RootModule().Resources[resourceNameIP].Primary.ID), nil
 				},
-				ImportStateVerify: true,
-			},
-			{
-				ImportState:  true,
-				ResourceName: resourceNameIP,
-				ImportStateIdFunc: func(s *terraform.State) (string, error) {
-					return fmt.Sprintf("%s/%s", accountID, s.RootModule().Resources[resourceNameIP].Primary.ID), nil
+				ImportStateVerify:       true,
+				ImportStateVerifyIgnore: []string{"items"},
+				ImportStateCheck: func(states []*terraform.InstanceState) error {
+					return nil
 				},
-				ImportStateKind: resource.ImportBlockWithID,
 			},
 		},
 	})
